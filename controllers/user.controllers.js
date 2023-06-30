@@ -9,16 +9,16 @@ module.exports.userControllers = {
     const { firstName, lastName, password, email } = req.body;
     console.log(1);
     try {
-    console.log(2);
+      console.log(2);
 
       const hash = bcrypt.hashSync(password, 10);
       const user = await User.create({
         firstName: firstName,
-        lastName: lastName,        
+        lastName: lastName,
         password: hash,
         email: email,
       });
-      await fileService.createDir(new File({user: user.id, naem: ''}))
+      await fileService.createDir(new File({ user: user.id, naem: "" }));
       res.json(user);
     } catch (error) {
       res.json({ error: error + "Ошибка добавления" });
@@ -50,7 +50,7 @@ module.exports.userControllers = {
         _id: candidate._id,
         firstName: candidate.firstName,
         lastName: candidate.lastName,
-        email: candidate.email
+        email: candidate.email,
       };
       // const name = candidate._id;
 
@@ -60,6 +60,23 @@ module.exports.userControllers = {
 
       res.json({ token });
     } catch (error) {
+      res.json(error);
+    }
+  },
+  updateUser: async (req, res) => {
+    try {
+      const { userId, firstName, lastName, email } = req.body;
+      const user = await User.findByIdAndUpdate(
+         userId ,
+        {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+        }
+      );
+      res.json({ user });
+    } catch (error) {
+      console.log(error);
       res.json(error);
     }
   },
