@@ -7,10 +7,7 @@ const fileService = require("../services/fileService");
 module.exports.userControllers = {
   addUser: async (req, res) => {
     const { firstName, lastName, password, email } = req.body;
-    console.log(1);
     try {
-      console.log(2);
-
       const hash = bcrypt.hashSync(password, 10);
       const user = await User.create({
         firstName: firstName,
@@ -18,7 +15,9 @@ module.exports.userControllers = {
         password: hash,
         email: email,
       });
-      await fileService.createDir(new File({ user: user.id, naem: "" }));
+      console.log(1);
+      await fileService.createDir(new File({ user: user.id, name: "" }));
+      console.log(2);
       res.json(user);
     } catch (error) {
       res.json({ error: error + "Ошибка добавления" });

@@ -1,0 +1,26 @@
+npm init -y   
+npm i mongoose
+npm i express
+npm i -D prettier
+npm i nodemon -D
+npx nodemon index.js
+npm i cors
+npm i bcrypt
+npm i dotenv
+npm i jsonwebtoken
+
+npm 1s react-dom
+npm i react-router-dom@6.0.2
+npm i react-redux
+npm i @redux/toolkit
+
+
+----------------------------
+chat GPT 
+pas - LrhrQOLy0i
+email - zardsoftsuigris1v@web.de
+
+
+
+Да, можно использовать стандартный компонент ImagePicker из библиотеки expo-image-picker для выбора изображения из галереи или сделать новое фото с камеры, а затем использовать другие библиотеки для обработки изображения и поиска на нем документов. Например, можно использовать react-native-opencv3 для обработки изображения и поиска границ документов, а затем использовать react-native-pdf-lib для сохранения результата в формате PDF. Однако, использование специализированных библиотек, таких как react-native-document-scanner, может упростить процесс сканирования и обработки документов.
+я создаю react native изображение на expo. его функционал таков он должен позволять пользователю выбирать изображение документа из галереи или с камеры для оцифровки. Я не могу использовать react native document scunner plugin так как он не работает с expo, также я не могу использовать expo document scanner 
