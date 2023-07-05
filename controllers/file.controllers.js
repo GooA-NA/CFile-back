@@ -35,7 +35,6 @@ module.exports.fileControllers = {
     try {
       const files = await File.find({
         user: req.body.userId,
-        parent: req.query.parent,
       });
       return res.json({ files });
     } catch (e) {
@@ -44,23 +43,21 @@ module.exports.fileControllers = {
   },
   uploadFile: async (req, res) => {
     try {
-      console.log(1);
       const file = req.files.file;
 
       const parent = await File.findOne({
         user: req.params.id,
         _id: req.body.parent,
       });
+      console.log(parent, 'otec vu')
       const user = await User.findOne({_id: req.params.id})
-      console.log(user);
-
+      console.log(user, 'user vu');
       let path;
 
       if (parent) {
-        path = `${process.env.FILEPATH}\\${user._id}\\${parent.path}\\${file.name}`;
+        path = `${process.env.FILEPATH}\\${user._id}\\${parent.name}\\${file.name}`;
       } else {
         path = `${process.env.FILEPATH}\\${user._id}\\${file.name}`;
-        console.log(path);
       }
 
       file.mv(path);
